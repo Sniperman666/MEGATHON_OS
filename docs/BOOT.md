@@ -35,11 +35,11 @@ The command should produce a list of drives installed in your system:
              <img src="./images/Unflashed-Boot-1.png" alt="Unflashed boot" width="800" />
 </div>
 
-Keep track of the drive with the OCLP install. You will need the drive identifer for later.
+Keep track of the drive with the OCLP install. You will need the drive identifier for later.
 
 Now you'll want to mount the EFI partition (where OCLP is installed, though it may differ if you've installed OCLP to a FAT-32 volume).
 
-Run the following command (Replace X with the drive number):
+Run the following command (Replace X with the drive number, and `s1` with the EFI partition's number if it differs in the `diskutil list` output):
 ```sh
 diskutil mount diskXs1
 ```
@@ -48,13 +48,13 @@ diskutil mount diskXs1
              <img src="./images/Unflashed-Boot-2.png" alt="Unflashed boot 2" width="800" />
 </div>
 
-If everything is correct, the EFI partion should be mounted.
+If everything is correct, the EFI partition should be mounted.
 
 Now you'll want to use the `bless` command to set the default boot device:
 ```sh
 bless --mount /Volumes/EFI --setBoot --file /Volumes/EFI/System/Library/CoreServices/boot.efi
 ```
-Once the command is run, it should produce no output.
+Once the command is run, it should produce no output. Note that `bless` will report an error if the path is wrong, so any output means something needs fixing.
 
 <div align="left">
              <img src="./images/Unflashed-Boot-3.png" alt="Unflashed boot 3" width="800" />
