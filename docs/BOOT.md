@@ -98,6 +98,23 @@ When installing macOS Sonoma or newer on a T1 system (2016-2017), full disk wipe
 :::
 
 
+::: details "This copy of the Install macOS application is damaged" error
+
+This is usually caused by the installer's certificate having expired relative to the Mac's clock. To work around it:
+
+1. In the installer, open Utilities > Terminal.
+2. Set the date to a time when the installer was valid, for example:
+```sh
+date 0101010120
+```
+(Format is `MMDDhhmmYY`, so this sets 1 Jan 2020.)
+
+3. Quit Terminal and run the installer again.
+
+If the error persists, re-download the installer and rebuild the USB installer.
+
+:::
+
 If your Mac is looping back into the beginning of the setup after the first reboot, turn it off, start it again and hold Option. This time (after choosing `EFI Boot` first) select the option with a grey hard disk icon in the OpenCore picker. It can either say `macOS Installer` or the name you gave the disk during the installer process. Keep repeating this step after every reboot if necessary.
 
 <div align="left">
