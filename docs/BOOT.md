@@ -35,11 +35,11 @@ The command should produce a list of drives installed in your system:
              <img src="./images/Unflashed-Boot-1.png" alt="Unflashed boot" width="800" />
 </div>
 
-Keep track of the drive with the OCLP install. You will need the drive identifer for later.
+Keep track of the drive with the OCLP install. You will need the drive identifier for later.
 
 Now you'll want to mount the EFI partition (where OCLP is installed, though it may differ if you've installed OCLP to a FAT-32 volume).
 
-Run the following command (Replace X with the drive number):
+Run the following command (Replace X with the drive number, and `s1` with the EFI partition's number if it differs in the `diskutil list` output):
 ```sh
 diskutil mount diskXs1
 ```
@@ -48,13 +48,13 @@ diskutil mount diskXs1
              <img src="./images/Unflashed-Boot-2.png" alt="Unflashed boot 2" width="800" />
 </div>
 
-If everything is correct, the EFI partion should be mounted.
+If everything is correct, the EFI partition should be mounted.
 
 Now you'll want to use the `bless` command to set the default boot device:
 ```sh
 bless --mount /Volumes/EFI --setBoot --file /Volumes/EFI/System/Library/CoreServices/boot.efi
 ```
-Once the command is run, it should produce no output.
+Once the command is run, it should produce no output. Note that `bless` will report an error if the path is wrong, so any output means something needs fixing.
 
 <div align="left">
              <img src="./images/Unflashed-Boot-3.png" alt="Unflashed boot 3" width="800" />
@@ -97,6 +97,23 @@ When installing macOS Sonoma or newer on a T1 system (2016-2017), full disk wipe
 
 :::
 
+
+::: details "This copy of the Install macOS application is damaged" error
+
+This is usually caused by the installer's certificate having expired relative to the Mac's clock. To work around it:
+
+1. In the installer, open Utilities > Terminal.
+2. Set the date to a time when the installer was valid, for example:
+```sh
+date 0101010120
+```
+(Format is `MMDDhhmmYY`, so this sets 1 Jan 2020.)
+
+3. Quit Terminal and run the installer again.
+
+If the error persists, re-download the installer and rebuild the USB installer.
+
+:::
 
 If your Mac is looping back into the beginning of the setup after the first reboot, turn it off, start it again and hold Option. This time (after choosing `EFI Boot` first) select the option with a grey hard disk icon in the OpenCore picker. It can either say `macOS Installer` or the name you gave the disk during the installer process. Keep repeating this step after every reboot if necessary.
 
