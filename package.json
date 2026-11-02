@@ -1,0 +1,11 @@
+{
+  "name": "megathon-os-site",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Static documentation site build pipeline",
+  "scripts": {
+    "build": "bash scripts/build.sh",
+    "clean": "rm -rf dist",
+    "preview": "python3 -m http.server 8000 -d dist"
+  }
+}
