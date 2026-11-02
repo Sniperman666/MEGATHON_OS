@@ -65,11 +65,9 @@ Following GPUs are applicable:
 ### Dual socket CPUs with Mac Pro 2008 and Xserve 2008
 
 
-Booting Sequoia on Mac Pro 2008 (MacPro3,1) or Xserve 2008 (Xserve2,1) with more than 4 cores will cause them to panic. OpenCore Legacy Patcher will automatically disable additional cores.
+Booting Sequoia on Mac Pro 2008 (MacPro3,1) or Xserve 2008 (Xserve2,1) with more than 4 cores will cause them to panic. OpenCore Legacy Patcher automatically enables the CPU startup-ordering patch so only the first four cores are used on these systems.
 
-This is due to the dual socket nature of the machine, and likely some firmware/ACPI table incompatibility.
-
-**If building OpenCore for older OS, this limitation can be disabled in Settings -> Build -> "MacPro3,1/Xserve2,1 Workaround".**
+This is due to the dual socket nature of the machine, and likely some firmware/ACPI table incompatibility. The workaround is built into the firmware patching path and no longer requires a user-facing Build setting.
 
 ::: warning Note
 

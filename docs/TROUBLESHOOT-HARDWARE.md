@@ -152,12 +152,9 @@ Because of this, we recommend placing a USB 2.0/3.0 hub between your devices and
 
 ## Secondary CPU not visible on MacPro3,1/Xserve2,1
 
-Starting with macOS Sequoia, OCLP has to disable the secondary CPU in these systems to avoid a panic. This also means by default, only single CPU will be usable even on older versions. To re-enable both CPUs on older versions, do the following: 
+Starting with macOS Sequoia, OCLP applies the CPU startup-ordering kernel patch on these systems to avoid a panic. This means the second CPU is intentionally left disabled, even on older OS versions, and the system boots with a safe 4-core configuration.
 
-1. Open Settings -> `Build` tab.
-2. Untick `MacPro3,1/Xserve2,1 Workaround`.
-3. Rebuild OpenCore.
-4. Reboot.
+The workaround is built into the firmware patching pipeline and no longer requires a macOS Build toggle. The patch cannot be disabled safely on Sequoia or newer, and dual-socket booting remains unsupported in multiboot setups.
 
 **Dual CPUs cannot be enabled in any circumstance if Sequoia or newer is installed, even in multiboot scenarios. Doing so will make Sequoia unbootable.**
 

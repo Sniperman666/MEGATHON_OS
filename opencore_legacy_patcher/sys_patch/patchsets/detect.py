@@ -212,25 +212,25 @@ class HardwarePatchsetDetection:
             "Custom Signature",
         }
         installed_patchset = {key for key in oclp_plist.keys() if key not in metadata_keys}
-        requested_patchset = set()
-        for hardware in present_hardware:
-            requested_patchset.update(hardware.patches().keys())
-
-        if installed_patchset and installed_patchset - requested_patchset:
-            logging.error(
-                "Installed patches %s are incompatible with the currently requested patchset %s; unpatch required before repatching",
-                sorted(installed_patchset - requested_patchset),
-                sorted(requested_patchset),
-            )
-            return True
+        if not installed_patchset:
+            return False
 
         for hardware in present_hardware:
+            requested_patchset = set(hardware.patches().keys())
+            if installed_patchset - requested_patchset:
+                logging.error(
+                    "%s patches installed by OCLP %s are incompatible with the currently detected hardware; unpatch required before repatching",
+                    hardware.name(),
+                    installed_version,
+                )
+                return True
+
             unpatch_version = hardware.unpatch_required()
             if unpatch_version is None:
                 continue
             if installed_version > packaging.version.parse(unpatch_version):
                 continue
-            if not oclp_plist.keys() & hardware.patches().keys():
+            if not installed_patchset & requested_patchset:
                 continue
             logging.error(f"{hardware.name()} patches installed by OCLP {installed_version} require unpatching before repatching (last affected version: {unpatch_version})")
             return True
