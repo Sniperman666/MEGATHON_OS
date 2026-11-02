@@ -6,6 +6,8 @@
   "scripts": {
     "build": "bash scripts/build.sh",
     "clean": "rm -rf dist",
-    "preview": "python3 -m http.server 8000 -d dist"
+    "preview": "python3 -m http.server 8000 -d dist",
+    "hex": "python3 scripts/hex_ops.py",
+    "py-compile": "python3 -m py_compile scripts/hex_ops.py"
   }
 }

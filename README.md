@@ -27,6 +27,29 @@ No build step is required for basic edits.
 2. Open `http://localhost:8000` in your browser.
 3. Edit HTML/assets and refresh to validate changes.
 
+## Python Hex Operations
+
+Hex operations are available through `scripts/hex_ops.py`.
+
+- Encode binary file to hex text:
+  ```bash
+  npm run hex -- encode input.bin output.hex
+  ```
+- Decode hex text back to binary:
+  ```bash
+  npm run hex -- decode output.hex restored.bin
+  ```
+- Apply repeating XOR using a hex key:
+  ```bash
+  npm run hex -- xor input.bin output.bin deadbeef
+  ```
+
+Validate Python bytecode compilation:
+
+```bash
+npm run py-compile
+```
+
 ## Deployment
 
 Changes are published through the `gh-pages` branch deployment flow.
