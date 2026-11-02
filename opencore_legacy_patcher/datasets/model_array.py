@@ -5,6 +5,7 @@ model_array.py: Datasets for different models
 
 SupportedSMBIOS = [
     # MacBook
+    "MacBook3,1",
     "MacBook4,1",
     "MacBook5,1",
     "MacBook5,2",
@@ -14,6 +15,7 @@ SupportedSMBIOS = [
     "MacBook9,1",
     "MacBook10,1",
     # MacBook Air
+    "MacBookAir1,1",
     "MacBookAir2,1",
     "MacBookAir3,1",
     "MacBookAir3,2",
@@ -29,6 +31,9 @@ SupportedSMBIOS = [
     # "MacBookAir8,2",
     # "MacBookAir9,1",
     # MacBook Pro
+    "MacBookPro2,1",
+    "MacBookPro2,2",
+    "MacBookPro3,1",
     "MacBookPro4,1",
     "MacBookPro5,1",
     "MacBookPro5,2",
@@ -73,6 +78,8 @@ SupportedSMBIOS = [
     "Macmini7,1",
     # "Macmini8,1",
     # iMac
+    "iMac5,1",
+    "iMac6,1",
     "iMac7,1",
     "iMac8,1",
     "iMac9,1",
@@ -99,11 +106,14 @@ SupportedSMBIOS = [
     "iMac19,1",
     "iMac19,2",
     # Mac Pro
+    "MacPro1,1",
+    "MacPro2,1",
     "MacPro3,1",
     "MacPro4,1",
     "MacPro5,1",
     "MacPro6,1",
     # Xserve
+    "Xserve1,1",
     "Xserve2,1",
     "Xserve3,1",
     # iMac Pro
