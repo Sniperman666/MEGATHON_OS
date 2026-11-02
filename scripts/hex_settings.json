@@ -1,0 +1,10 @@
+{
+  "dev": {
+    "access_token": "CHANGE_ME",
+    "allow_overwrite": false,
+    "default_uppercase": false,
+    "default_xor_key": "",
+    "dry_run": false,
+    "verbose": false
+  }
+}
