@@ -195,14 +195,14 @@ class SettingsFrame(wx.Frame):
                     choice.SetFont(gui_support.font_factory(13, wx.FONTWEIGHT_NORMAL))
                     choice.SetSelection(choice.FindString(setting_info["value"]))
                     if "override_function" in setting_info:
-                        choice.Bind(wx.EVT_CHOICE, lambda event, variable=setting: self.settings[tab][variable]["override_function"](event))
+                        choice.Bind(wx.EVT_CHOICE, lambda event, variable=setting, current_tab=tab: self.settings[current_tab][variable]["override_function"](event))
                     else:
                         choice.Bind(wx.EVT_CHOICE, lambda event, variable=setting: self.on_choice(event, variable))
                     height += 10
                 elif setting_info["type"] == "button":
                     button = wx.Button(panel, label=setting, pos=(width + 25, 10 + height), size = (200,-1))
                     button.SetFont(gui_support.font_factory(13, wx.FONTWEIGHT_NORMAL))
-                    button.Bind(wx.EVT_BUTTON, lambda event, variable=setting: self.settings[tab][variable]["function"](event))
+                    button.Bind(wx.EVT_BUTTON, lambda event, variable=setting, current_tab=tab: self.settings[current_tab][variable]["function"](event))
                     height += 10
 
                 else:

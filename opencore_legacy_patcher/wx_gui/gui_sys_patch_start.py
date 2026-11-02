@@ -39,7 +39,7 @@ class SysPatchStartFrame(wx.Frame):
     Create a frame for root patching
     Uses a Modal Dialog for smoother transition from other frames
     """
-    def __init__(self, parent: wx.Frame, title: str, global_constants: constants.Constants, screen_location: tuple = None, patches: dict = {}):
+    def __init__(self, parent: wx.Frame, title: str, global_constants: constants.Constants, screen_location: tuple = None, patches: dict = None):
         logging.info("Initializing Root Patching Frame")
 
         self.title = title
@@ -47,7 +47,7 @@ class SysPatchStartFrame(wx.Frame):
         self.frame_modal: wx.Dialog = None
         self.return_button: wx.Button = None
         self.available_patches: bool = False
-        self.patches: dict = patches
+        self.patches: dict = patches if patches is not None else {}
 
         super(SysPatchStartFrame, self).__init__(parent, title=title, size=(350, 200), style=wx.DEFAULT_FRAME_STYLE & ~(wx.RESIZE_BORDER | wx.MAXIMIZE_BOX))
         gui_support.GenerateMenubar(self, self.constants).generate()
@@ -226,10 +226,12 @@ class SysPatchStartFrame(wx.Frame):
         return True
 
 
-    def _generate_modal(self, patches: dict = {}, variant: str = "Root Patching"):
+    def _generate_modal(self, patches: dict = None, variant: str = "Root Patching"):
         """
         Create UI for root patching/unpatching
         """
+        patches = patches if patches is not None else {}
+
         supported_variants = ["Root Patching", "Revert Root Patches"]
         if variant not in supported_variants:
             logging.error(f"Unsupported variant: {variant}")
