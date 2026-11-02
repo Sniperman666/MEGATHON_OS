@@ -201,6 +201,29 @@ class HardwarePatchsetDetection:
         except Exception:
             return False
 
+        metadata_keys = {
+            "OpenCore Legacy Patcher",
+            "PatcherSupportPkg",
+            "Time Patched",
+            "Commit URL",
+            "Kernel Debug Kit Used",
+            "Metal Library Used",
+            "OS Version",
+            "Custom Signature",
+        }
+        installed_patchset = {key for key in oclp_plist.keys() if key not in metadata_keys}
+        requested_patchset = set()
+        for hardware in present_hardware:
+            requested_patchset.update(hardware.patches().keys())
+
+        if installed_patchset and installed_patchset - requested_patchset:
+            logging.error(
+                "Installed patches %s are incompatible with the currently requested patchset %s; unpatch required before repatching",
+                sorted(installed_patchset - requested_patchset),
+                sorted(requested_patchset),
+            )
+            return True
+
         for hardware in present_hardware:
             unpatch_version = hardware.unpatch_required()
             if unpatch_version is None:
