@@ -338,10 +338,12 @@ class HardwarePatchsetDetection:
         return metallib_handler.MetalLibraryObject(self._constants, self._os_build, self._os_version).metallib_already_installed
 
 
-    def _can_patch(self, requirements: dict, ignore_keys: list[str] = []) -> bool:
+    def _can_patch(self, requirements: dict, ignore_keys: list[str] = None) -> bool:
         """
         Check if patching is possible
         """
+        ignore_keys = ignore_keys if ignore_keys is not None else []
+
         for key, value in requirements.items():
             if key in ignore_keys:
                 continue
