@@ -217,7 +217,7 @@ class HardwarePatchsetDetection:
 
         for hardware in present_hardware:
             requested_patchset = set(hardware.patches().keys())
-            if installed_patchset - requested_patchset:
+            if installed_patchset != requested_patchset:
                 logging.error(
                     "%s patches installed by OCLP %s are incompatible with the currently detected hardware; unpatch required before repatching",
                     hardware.name(),
