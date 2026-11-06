@@ -29,9 +29,9 @@ from .support import (
 )
 
 
-class OpenCoreLegacyPatcher:
+class MegathonLauncher:
     """
-    Initial entry point for starting OpenCore Legacy Patcher
+    Initial entry point for starting MEGATHON OS
     """
 
     def __init__(self) -> None:
@@ -96,7 +96,7 @@ class OpenCoreLegacyPatcher:
             # We're running from source
             launcher_script =  __file__
             if "main.py" in launcher_script:
-                launcher_script = launcher_script.replace("/resources/main.py", "/OpenCore-Patcher-GUI.command")
+                launcher_script = launcher_script.replace("/resources/main.py", "/MEGATHON-Launcher.command")
         self.constants.launcher_binary = launcher_binary
         self.constants.launcher_script = launcher_script
 
@@ -138,4 +138,4 @@ def main():
     """
     Main entry point
     """
-    OpenCoreLegacyPatcher()
+    MegathonLauncher()

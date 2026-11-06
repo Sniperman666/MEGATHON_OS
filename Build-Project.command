@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Build-Project.command: Generate OpenCore-Patcher.app and OpenCore-Patcher.pkg
+Build-Project.command: Generate MEGATHON-Launcher.app and MEGATHON-Launcher.pkg
 """
 
 import os
@@ -23,7 +23,7 @@ def main() -> None:
     Parse Command Line Arguments
     """
 
-    parser = argparse.ArgumentParser(description="Build OpenCore Legacy Patcher Suite", add_help=False)
+    parser = argparse.ArgumentParser(description="Build MEGATHON OS Suite", add_help=False)
 
     # Signing Parameters
     parser.add_argument("--application-signing-identity", type=str, help="Application Signing Identity")
@@ -85,7 +85,7 @@ def main() -> None:
             notarization_team_id=args.notarization_team_id,
         ).sign_and_notarize()
 
-        # Build OpenCore-Patcher.app
+        # Build MEGATHON-Launcher.app
         application.GenerateApplication(
             reset_pyinstaller_cache=args.reset_pyinstaller_cache,
             git_branch=args.git_branch,
@@ -95,9 +95,9 @@ def main() -> None:
             analytics_endpoint=args.analytics_endpoint,
         ).generate()
 
-        # Sign OpenCore-Patcher.app
+        # Sign MEGATHON-Launcher.app
         sign_notarize.SignAndNotarize(
-            path=Path("dist/OpenCore-Patcher.app"),
+            path=Path("dist/MEGATHON-Launcher.app"),
             signing_identity=args.application_signing_identity,
             notarization_apple_id=args.notarization_apple_id,
             notarization_password=args.notarization_password,
@@ -107,21 +107,21 @@ def main() -> None:
 
 
     if (args.run_as_individual_steps is False) or (args.run_as_individual_steps and args.prepare_package):
-        # Build OpenCore-Patcher.pkg and OpenCore-Patcher-Uninstaller.pkg
+        # Build MEGATHON-Launcher.pkg and MEGATHON-Launcher-Uninstaller.pkg
         package.GeneratePackage().generate()
 
-        # Sign OpenCore-Patcher.pkg
+        # Sign MEGATHON-Launcher.pkg
         sign_notarize.SignAndNotarize(
-            path=Path("dist/OpenCore-Patcher.pkg"),
+            path=Path("dist/MEGATHON-Launcher.pkg"),
             signing_identity=args.installer_signing_identity,
             notarization_apple_id=args.notarization_apple_id,
             notarization_password=args.notarization_password,
             notarization_team_id=args.notarization_team_id,
         ).sign_and_notarize()
 
-        # Sign OpenCore-Patcher-Uninstaller.pkg
+        # Sign MEGATHON-Launcher-Uninstaller.pkg
         sign_notarize.SignAndNotarize(
-            path=Path("dist/OpenCore-Patcher-Uninstaller.pkg"),
+            path=Path("dist/MEGATHON-Launcher-Uninstaller.pkg"),
             signing_identity=args.installer_signing_identity,
             notarization_apple_id=args.notarization_apple_id,
             notarization_password=args.notarization_password,

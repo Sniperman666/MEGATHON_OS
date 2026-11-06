@@ -27,7 +27,7 @@ if Path("DortaniaInternalResources.dmg").exists():
    datas.append(('DortaniaInternalResources.dmg', '.'))
 
 
-a = Analysis(['OpenCore-Patcher-GUI.command'],
+a = Analysis(['MEGATHON-Launcher.command'],
              pathex=[],
              binaries=[],
              datas=datas,
@@ -49,7 +49,7 @@ exe = EXE(pyz,
           a.scripts,
           [],
           exclude_binaries=True,
-          name='OpenCore-Patcher',
+          name='MEGATHON-Launcher',
           debug=False,
           bootloader_ignore_signals=False,
           strip=False,
@@ -67,14 +67,14 @@ coll = COLLECT(exe,
                strip=False,
                upx=True,
                upx_exclude=[],
-               name='OpenCore-Patcher')
+               name='MEGATHON-Launcher')
 
 app = BUNDLE(coll,
-             name='OpenCore-Patcher.app',
+             name='MEGATHON-Launcher.app',
              icon="payloads/Icon/AppIcons/OC-Patcher.icns",
              bundle_identifier="com.dortania.opencore-legacy-patcher",
              info_plist={
-                "CFBundleName": "OpenCore Legacy Patcher",
+                "CFBundleName": "MEGATHON OS",
                 "CFBundleVersion": constants.Constants().patcher_version,
                 "CFBundleShortVersionString": constants.Constants().patcher_version,
                 "NSHumanReadableCopyright": constants.Constants().copyright_date,
