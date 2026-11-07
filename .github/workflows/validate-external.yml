@@ -1,5 +1,8 @@
 name: CI - Validation (External)
 
+permissions:
+  contents: read
+
 on:
   push:
     paths-ignore: 
