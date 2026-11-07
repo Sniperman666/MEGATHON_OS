@@ -44,6 +44,10 @@
       "vuepress-plugin-fulltext-search": "^2.2.1",
       "vuepress-theme-succinct": "^1.7.2"
    },
+   "resolutions": {
+      "loader-utils": "^1.4.2",
+      "form-data": "^2.5.5"
+   },
    "homepage": "https://dortania.github.io/OpenCore-Legacy-Patcher/",
    "packageManager": "yarn@1.22.19+sha1.4ba7fc5c6e704fce2066ecbfb0b0d8976fe62447"
 }
