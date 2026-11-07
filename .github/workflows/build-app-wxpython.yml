@@ -1,5 +1,8 @@
 name: CI - Build wxPython
 
+permissions:
+  contents: write
+
 on:
   push:
     paths-ignore:
