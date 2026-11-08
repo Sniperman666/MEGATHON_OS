@@ -3,57 +3,63 @@ import { viteBundler } from "@vuepress/bundler-vite";
 import { defaultTheme } from "@vuepress/theme-default";
 import markdownItMultiMdTable from "markdown-it-multimd-table";
 
+const toItems = (children) =>
+  children.map((link) => ({
+    text: link.replace(/^\//, "").replace(/\.md$/, ""),
+    link,
+  }));
+
 const sidebar = [
   {
     text: "Introduction",
     collapsible: false,
-    children: ["/START.md", "/MODELS.md", "/FAQ.md"],
+    children: toItems(["/START.md", "/MODELS.md", "/FAQ.md"]),
   },
   {
     text: "How to install",
     collapsible: false,
-    children: ["/INSTALLER.md", "/BUILD.md", "/BOOT.md", "/POST-INSTALL.md"],
+    children: toItems(["/INSTALLER.md", "/BUILD.md", "/BOOT.md", "/POST-INSTALL.md"]),
   },
   {
     text: "macOS Support",
     collapsible: false,
-    children: ["/SEQUOIA-DROP.md", "/SONOMA-DROP.md", "/VENTURA-DROP.md", "/MONTEREY-DROP.md"],
+    children: toItems(["/SEQUOIA-DROP.md", "/SONOMA-DROP.md", "/VENTURA-DROP.md", "/MONTEREY-DROP.md"]),
   },
   {
     text: "Ongoing macOS issues",
     collapsible: false,
-    children: ["/ONGOING-ISSUES.md"],
+    children: toItems(["/ONGOING-ISSUES.md"]),
   },
   {
     text: "Application",
     collapsible: false,
-    children: ["/UPDATE.md", "/UNINSTALL.md", "/PROCESS.md"],
+    children: toItems(["/UPDATE.md", "/UNINSTALL.md", "/PROCESS.md"]),
   },
   {
     text: "Troubleshooting",
     collapsible: false,
-    children: [
+    children: toItems([
       "/TROUBLESHOOT-APP.md",
       "/TROUBLESHOOT-MISC.md",
       "/TROUBLESHOOT-NONMETAL.md",
       "/TROUBLESHOOT-HARDWARE.md",
       "/DEBUG.md",
-    ],
+    ]),
   },
   {
     text: "Misc",
     collapsible: false,
-    children: ["/TIMEMACHINE.md", "/ICNS.md", "/WINDOWS.md", "/UNIVERSALCONTROL.md"],
+    children: toItems(["/TIMEMACHINE.md", "/ICNS.md", "/WINDOWS.md", "/UNIVERSALCONTROL.md"]),
   },
   {
     text: "Credit",
     collapsible: false,
-    children: ["/DONATE.md", "/LICENSE.md"],
+    children: toItems(["/DONATE.md", "/LICENSE.md"]),
   },
   {
     text: "Documentation",
     collapsible: false,
-    children: ["/ISSUES-HOLD.md", "/TERMS.md", "/HOW.md", "/PATCHEXPLAIN.md"],
+    children: toItems(["/ISSUES-HOLD.md", "/TERMS.md", "/HOW.md", "/PATCHEXPLAIN.md"]),
   },
 ];
 
