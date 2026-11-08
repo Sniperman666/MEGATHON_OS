@@ -12,8 +12,8 @@
       "url": "git+https://github.com/dortania/OpenCore-Legacy-Patcher.git"
    },
    "scripts": {
-      "dev": "vuepress dev",
-      "build": "vuepress build",
+      "dev": "vuepress dev .",
+      "build": "vuepress build .",
       "fix-lint": "run-script-os",
       "fix-lint:default": "(echo Attempting to fix lint... && markdownlint -c .markdownlint.json -p .markdownlintignore '**/*.md' -f && echo Fixed successfully, please commit.) || (echo Fix failed! && exit 1)",
       "fix-lint:win32": "(echo Attempting to fix lint... && markdownlint -c .markdownlint.json -p .markdownlintignore **/*.md -f && echo Fixed successfully, please commit.) || (echo Fix failed! && exit 1)",
@@ -33,20 +33,34 @@
    },
    "license": "CC-BY-NC-SA-4.0",
    "devDependencies": {
-      "@vuepress/plugin-back-to-top": "^1.9.8",
-      "@vuepress/plugin-medium-zoom": "^1.9.8",
+      "@vuepress/bundler-vite": "2.0.0-rc.31",
+      "@vuepress/plugin-back-to-top": "2.0.0-rc.31",
+      "@vuepress/plugin-medium-zoom": "2.0.0-rc.31",
+      "@vuepress/theme-default": "2.0.0-rc.31",
       "markdown-it-multimd-table": "^4.2.0",
       "markdown-link-check": "^3.10.3",
       "markdownlint-cli": "^0.33.0",
       "run-script-os": "^1.1.6",
       "spellchecker-cli": "^6.1.1",
-      "vuepress": "^1.9.8",
-      "vuepress-plugin-fulltext-search": "^2.2.1",
-      "vuepress-theme-succinct": "^1.7.2"
+      "vuepress": "2.0.0-rc.31"
    },
    "resolutions": {
-      "loader-utils": "^1.4.2",
-      "form-data": "^2.5.5"
+      "@vuepress/helper": "2.0.0-rc.31",
+      "@vuepress/plugin-active-header-links": "2.0.0-rc.31",
+      "@vuepress/plugin-back-to-top": "2.0.0-rc.31",
+      "@vuepress/plugin-copy-code": "2.0.0-rc.31",
+      "@vuepress/plugin-git": "2.0.0-rc.31",
+      "@vuepress/plugin-links-check": "2.0.0-rc.31",
+      "@vuepress/plugin-markdown-container": "2.0.0-rc.31",
+      "@vuepress/plugin-medium-zoom": "2.0.0-rc.31",
+      "@vuepress/plugin-nprogress": "2.0.0-rc.31",
+      "@vuepress/plugin-palette": "2.0.0-rc.31",
+      "@vuepress/plugin-prismjs": "2.0.0-rc.31",
+      "@vuepress/plugin-seo": "2.0.0-rc.31",
+      "@vuepress/plugin-sitemap": "2.0.0-rc.31",
+      "@vuepress/plugin-theme-data": "2.0.0-rc.31",
+      "basic-ftp": "^6.2.6",
+      "toml": "^5.0.1"
    },
    "homepage": "https://dortania.github.io/OpenCore-Legacy-Patcher/",
    "packageManager": "yarn@1.22.19+sha1.4ba7fc5c6e704fce2066ecbfb0b0d8976fe62447"
